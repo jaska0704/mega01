@@ -359,9 +359,40 @@ import os
 # print(result)
 ##----------------------------------------------
 
+class Talaba:
+    def __init__(self, ism) -> None:
+        self.ism=ism
+        self.nechta_kurs=0
+    
+    def ism_qaytar(self):
+        return self.ism
+    
+    def salomlash(self):
+        return "Assalom...."
 
+class Kurs:
+    def __init__(self, nom, ustoz) -> None:
+        self.nomi = nom
+        self.ustozi = ustoz
+        self.talabalar_royxati = []
+        self.talabalar_miqdori = 0
 
-
+    def add_student(self, obj: Talaba):
+        if obj.nechta_kurs == 0:
+            self.talabalar_royxati.append(obj.ism)
+            self.talabalar_miqdori +=1
+        else:
+            print("bir vaqtda ikki kursda o'qish mumkin emas")
+    
+    def remove_student(self, obj: Talaba):
+        if obj.ism_qaytar() in self.talabalar_royxati:
+            self.talabalar_royxati.remove(obj.ism_qaytar())
+            self.talabalar_miqdori-=1
+            obj.nechta_kurs=0
+    
+    def __str__(self) -> str:
+        return f"""
+Kurs nomi: {self.nomi}"""
 
 
 
